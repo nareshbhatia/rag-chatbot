@@ -2,7 +2,7 @@
 
 A chatbot with Retrieval Augmented Generation (RAG).
 
-** Tech Stack **
+**Tech Stack**
 
 1. [Vercel AI SDK](https://sdk.vercel.ai/)
 2. [OpenAI API](https://platform.openai.com) – GPT-3.5 Turbo model
