@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState, FormEvent } from 'react';
 import { Chat } from './_components/Chat';
+import { Context } from './_components/Context';
 import { useChat } from 'ai/react';
 
 export default function HomePage() {
@@ -51,6 +52,9 @@ export default function HomePage() {
           handleMessageSubmit={handleMessageSubmit}
           messages={messages}
         />
+        <div className="absolute transform translate-x-full transition-transform duration-500 ease-in-out right-0 w-2/3 h-full bg-gray-700 overflow-y-auto lg:static lg:translate-x-0 lg:w-2/5 lg:mx-2 rounded-lg">
+          <Context className="" selected={context} />
+        </div>
       </div>
     </div>
   );
