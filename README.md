@@ -9,6 +9,8 @@ A chatbot with Retrieval Augmented Generation (RAG).
 3. [Pinecone](https://www.pinecone.io/) vector database to store vector
    embeddings
 
+![Screenshot](assets/screenshot.png)
+
 ## Development Build
 
 Copy `.env.example` to `.env.local` and fill in the variables. Then:
