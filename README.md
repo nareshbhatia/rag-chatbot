@@ -1,5 +1,14 @@
 # Vercel AI Chatbot
 
+A chatbot with Retrieval Augmented Generation (RAG).
+
+** Tech Stack **
+
+1. [Vercel AI SDK](https://sdk.vercel.ai/)
+2. [OpenAI API](https://platform.openai.com) – GPT-3.5 Turbo model
+3. [Pinecone](https://www.pinecone.io/) vector database to store vector
+   embeddings
+
 ## Development Build
 
 Copy `.env.example` to `.env.local` and fill in the variables. Then:
