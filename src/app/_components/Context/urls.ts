@@ -6,7 +6,7 @@ export const urls = [
     loading: false,
   },
   {
-    url: 'https://cleantechnica.com/2023/06/29/solar-82-of-power-capacity-growth-in-india-in-2022/',
+    url: 'https://www.asiafinancial.com/india-now-worlds-third-biggest-generator-of-solar-power',
     title: 'Solar Power in India',
     seeded: false,
     loading: false,

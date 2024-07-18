@@ -6,6 +6,7 @@ export const runtime = 'edge';
 
 export async function POST(req: Request) {
   const { url, options } = await req.json();
+  console.log('-----> /api/crawl', url, options);
   try {
     const documents = await seed(
       url,

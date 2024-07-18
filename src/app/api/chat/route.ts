@@ -14,6 +14,7 @@ export const runtime = 'edge';
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
+    console.log('-----> /api/chat', messages);
 
     // Get the last message
     const lastMessage = messages[messages.length - 1];

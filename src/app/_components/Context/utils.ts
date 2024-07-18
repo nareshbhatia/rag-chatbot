@@ -42,7 +42,7 @@ export async function clearIndex(
   setEntries: React.Dispatch<React.SetStateAction<IUrlEntry[]>>,
   setCards: React.Dispatch<React.SetStateAction<ICard[]>>,
 ) {
-  const response = await fetch('/api/clearIndex', {
+  const response = await fetch('/api/clearindex', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
