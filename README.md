@@ -1,4 +1,4 @@
-# Vercel AI Chatbot
+# RAG Chatbot
 
 A chatbot with Retrieval Augmented Generation (RAG).
 

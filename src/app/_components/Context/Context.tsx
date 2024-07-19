@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { urls } from './urls';
 import UrlButton from './UrlButton';
 import { Card, ICard } from './Card';
@@ -6,7 +6,7 @@ import { clearIndex, crawlDocument } from './utils';
 import { Button } from './Button';
 
 interface ContextProps {
-  className: string;
+  className?: string;
   selected: string[] | null;
 }
 
@@ -33,7 +33,7 @@ export function Context({ className, selected }: ContextProps) {
   );
 
   const buttons = entries.map((entry, key) => (
-    <div className="" key={`${key}-${entry.loading}`}>
+    <div key={`${key}-${entry.loading}`}>
       <UrlButton
         entry={entry}
         onClick={() =>

@@ -21,6 +21,7 @@ export async function POST(req: Request) {
 
     // Get the context from the last message
     const context = await getContext(lastMessage.content, '');
+    console.log('-----> /api/chat context', context);
 
     const prompt = [
       {
