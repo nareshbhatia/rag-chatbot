@@ -36,6 +36,9 @@ const getMatchesFromEmbeddings = async (
   // Get the namespace
   const pineconeNamespace = index.namespace(namespace ?? '');
 
+  console.log(
+    `-----> getMatchesFromEmbeddings: pinecone.query(${embeddings.length} embeddings)`,
+  );
   try {
     // Query the index with the defined request
     const queryResult = await pineconeNamespace.query({
@@ -43,6 +46,9 @@ const getMatchesFromEmbeddings = async (
       topK,
       includeMetadata: true,
     });
+    console.log(
+      `-----> getMatchesFromEmbeddings: received: ${queryResult.matches.length} matches`,
+    );
     return queryResult.matches || [];
   } catch (e) {
     // Log the error and throw it

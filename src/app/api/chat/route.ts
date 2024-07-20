@@ -14,14 +14,13 @@ export const runtime = 'edge';
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
-    console.log('-----> /api/chat', messages);
+    console.log(`-----> /api/chat: called with ${messages.length} messages`);
 
     // Get the last message
     const lastMessage = messages[messages.length - 1];
 
     // Get the context from the last message
     const context = await getContext(lastMessage.content, '');
-    console.log('-----> /api/chat context', context);
 
     const prompt = [
       {
@@ -44,6 +43,9 @@ export async function POST(req: Request) {
     ];
 
     // Ask OpenAI for a streaming chat completion given the prompt
+    console.log(
+      `-----> /api/chat: openai.createChatCompletion(${messages.length} messages)`,
+    );
     const response = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo-0125',
       stream: true,
@@ -57,6 +59,7 @@ export async function POST(req: Request) {
     const stream = OpenAIStream(response);
 
     // Respond with the stream
+    console.log(`-----> /api/chat: returning a new StreamingTextResponse`);
     return new StreamingTextResponse(stream);
   } catch (e) {
     throw e;

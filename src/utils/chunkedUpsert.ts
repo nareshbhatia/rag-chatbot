@@ -12,6 +12,9 @@ export const chunkedUpsert = async (
   namespace: string,
   chunkSize = 10,
 ) => {
+  console.log(
+    `-----> chunkedUpsert: pineconeIndex.upsert(${vectors.length} vectors)`,
+  );
   // Split the vectors into chunks
   const chunks = sliceIntoChunks<PineconeRecord>(vectors, chunkSize);
 

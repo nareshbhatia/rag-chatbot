@@ -41,7 +41,9 @@ async function seed(
     const crawler = new Crawler(1, limit || 100);
 
     // Crawl the given URL and get the pages
+    console.log(`-----> seed: crawler.crawl(${url})`);
     const pages = (await crawler.crawl(url)) as Page[];
+    console.log(`-----> seed: received: ${pages.length} pages`);
 
     // Choose the appropriate document splitter based on the splitting method
     const splitter: DocumentSplitter =

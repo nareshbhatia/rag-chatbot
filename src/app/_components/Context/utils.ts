@@ -14,6 +14,7 @@ export async function crawlDocument(
       seed.url === url ? { ...seed, loading: true } : seed,
     ),
   );
+  console.log(`-----> crawlDocument: fetch('/api/crawl', ${url})`);
   const response = await fetch('/api/crawl', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -28,6 +29,7 @@ export async function crawlDocument(
   });
 
   const { documents } = await response.json();
+  console.log(`-----> crawlDocument: received ${documents.length} documents`);
 
   setCards(documents);
 

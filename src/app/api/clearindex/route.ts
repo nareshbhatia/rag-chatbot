@@ -2,8 +2,6 @@ import { NextResponse } from 'next/server';
 import { Pinecone } from '@pinecone-database/pinecone';
 
 export async function POST() {
-  console.log('-----> /api/clearindex');
-
   // Instantiate a new Pinecone client
   const pinecone = new Pinecone();
   // Select the desired index

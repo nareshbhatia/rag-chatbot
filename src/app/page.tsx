@@ -5,6 +5,12 @@ import { Chat } from './_components/Chat';
 import { Context } from './_components/Context';
 import { useChat } from 'ai/react';
 
+function printArray<T>(arr: T[]): void {
+  // print with a new line between each element
+  console.log(arr.join('\n'));
+  console.log(arr.join(', '));
+}
+
 export default function HomePage() {
   const [gotMessages, setGotMessages] = useState(false);
   const [context, setContext] = useState<string[] | null>(null);
@@ -17,6 +23,14 @@ export default function HomePage() {
 
   const prevMessagesLengthRef = useRef(messages.length);
 
+  console.log(
+    `-----> HomePage: context ${context === null ? 'null' : context.join('\n')}`,
+  );
+  console.log(
+    `-----> HomePage: rendering with ${messages.map((message) => message.content).join('\n')}`,
+  );
+  console.log(`-----> gotMessages: ${gotMessages}`);
+
   const handleMessageSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleSubmit(e);
@@ -26,6 +40,9 @@ export default function HomePage() {
 
   useEffect(() => {
     const getContext = async () => {
+      console.log(
+        `-----> HomePage: fetch('/api/context', ${messages.length} messages)`,
+      );
       const response = await fetch('/api/context', {
         method: 'POST',
         body: JSON.stringify({
@@ -33,6 +50,9 @@ export default function HomePage() {
         }),
       });
       const { context } = await response.json();
+      console.log(
+        `-----> HomePage: received context with ${context.length} strings`,
+      );
       setContext(context.map((c: any) => c.id));
     };
     if (gotMessages && messages.length >= prevMessagesLengthRef.current) {

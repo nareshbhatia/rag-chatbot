@@ -20,7 +20,9 @@
     "testid",
     "tsup",
     "turborepo",
-    "typecheck"
+    "typecheck",
+    "upsert",
+    "upserting"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
