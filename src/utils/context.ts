@@ -16,6 +16,8 @@ export const getContext = async (
   minScore = 0.7,
   getOnlyText = true,
 ): Promise<string | ScoredPineconeRecord[]> => {
+  console.log(`-----> getContext: message=${message}`);
+
   // Get the embeddings of the input message
   const embedding = await getEmbeddings(message);
 
@@ -24,6 +26,9 @@ export const getContext = async (
 
   // Filter out the matches that have a score lower than the minimum score
   const qualifyingDocs = matches.filter((m) => m.score && m.score > minScore);
+  console.log(
+    `-----> getContext: ${qualifyingDocs.length} qualifyingDocs from ${matches.length} matches`,
+  );
 
   if (!getOnlyText) {
     // Use a map to deduplicate matches by URL
@@ -33,6 +38,9 @@ export const getContext = async (
   let docs = matches
     ? qualifyingDocs.map((match) => (match.metadata as Metadata).chunk)
     : [];
+
   // Join all the chunks of text together, truncate to the maximum number of tokens, and return the result
-  return docs.join('\n').substring(0, maxTokens);
+  const result = docs.join('\n').substring(0, maxTokens);
+  console.log(`-----> getContext: resulting context:${result}`);
+  return result;
 };
